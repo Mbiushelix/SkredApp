@@ -1,0 +1,488 @@
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
+#:import Clock kivy.clock.Clock
+<MagicButton@MagicBehavior+Button>
+Manager:
+    transition: WipeTransition()
+    MainWindow:
+    Sikkerhet:
+    Landskap:
+    Snoeskred:
+    Help:
+
+
+<MainWindow>:
+    name: "main"
+    button:button
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            id:button
+            md_bg_color:  (178/255, 252/255, 255/255, 1)
+            specific_text_color: (0,0,0,1)
+            title: "SkredKompis"
+            type: "top"
+            radius: (0, 0, 32, 32)
+            elevation: 0
+            right_action_items: [["help", lambda x: root.help(x)]]
+
+        FloatLayout:
+            size: root.width, root.height
+            MagicButton:
+                magic_speed: 2
+                size_hint: None,None
+                size: ((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+                pos_hint: {"center_x": 0.5 ,"center_y":0.8}
+                background_color : 0,0,0,0
+
+                on_press:
+                    self.grow()
+                    root.landskap()
+                    root.vibrate()
+
+                Image:
+                    source: "Images/main_button1v2.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    size:((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+
+            MagicButton:
+                magic_speed:2
+                size_hint: None,None
+                background_color : 0,0,0,0
+                size: ((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+                pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+
+                on_press:
+                    self.grow()
+                    root.snoeskred()
+                    root.vibrate()
+
+                Image:
+                    source: "Images/main_button2v2.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    size:((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+
+            MagicButton:
+                magic_speed:2
+                size_hint : None,None
+                background_color : 0,0,0,0
+                size: ((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+                pos_hint: {"center_x": 0.5 ,"center_y":0.2}
+
+                on_press:
+                    self.grow()
+                    root.sikkerhet()
+                    root.vibrate()
+
+
+                Image:
+                    source: "Images/main_button3v2.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    size:((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+
+
+<Sikkerhet>:
+    name:"sikkerhet"
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            elevation: 0
+            radius: (0, 0, 32, 32)
+
+            md_bg_color:  (178/255, 252/255, 255/255, 1)
+            specific_text_color: (0,0,0,1)
+            title: "Sikkerhet"
+            type: "top"
+            right_action_items: [["home", lambda x: root.home(x)]]
+
+        ScrollView:
+            BoxLayout:
+                size_hint_y : None
+                height : self.minimum_height
+                orientation: "vertical"
+                padding: 30, 20
+                spacing: 10
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]Hensikt[/b][/size]\nSnøskred kan utgjøre en stor fare for mange viktige områder i Norge, som veier, jernbaner, arbeidsplasser og boliger. Det er derfor god grunn til å overvåke snøen på skredutsatte områder. NGI (Norges Geotekniske Institutt) overvåker mange skredområder daglig under vintersesongen, og varsler om potensielle farer til befolkningen og myndighetene.[/color]\n'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]Varsling[/b][/size]\nHovedsakelig er observatører den fremste metoden innen snøskredvarsling, men det brukes også andre teknologiske metoder for omfattende overvåking. NGI har et nettverk av frivillige og lønnet personale fra lokale myndigheter og skianlegg, som brukes sammen med observatører til å gjøre denne jobben. NVE (Norges vassdrags- og energidirektorat), som har utviklet og drifter en tjeneste som varsler om snøskredfare, samler inn og forvalter snømålinger fra egne instrumenter og satelitter. Bruken av satellitter for å oppdage og forutse snøskred begynte for fem år siden av forskergruppen NORCE i Tromsø. Radarer på satellittene måler endringer i tilbakestrålinger fra jorda fra to satellittbildeopptak av samme område. Overflaten til et snøskred er ujevn nok til å påvirke strålingen, og gjør det derfor lett å oppdage. Sesongen 2016-2017 ble det funnet 12 000 skred ved hjelp av satellittbilder. I figur 1 kan du se registrerte skred ved hjelp av satellitt i Tromsø og Lyngen kommune. Dataene som er samlet de siste fem årene gir forskere et bilde av skredutsatte områder. Sammen med meteorologisk data vil varslingene som publiseres på varsom.no lettere forutsi skredfare ved spesielle værforhold. NORCE forteller at kunstig intelligens kan bli brukt for å øke nøyaktigheten på skredvarslingen. Data fra NVE dekker uansett en rekke temaer som er aktuelle i beregningen av snøskredfare og varsling, som for eksempel snømengde, dybden av snøen, snøfuktighet og smelting.[/color]\n'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    keep_ratio : True
+                    allow_stretch : True
+                    size: ((root.width+root.height)/2)*(9.75/15),((root.width+root.height)/2)*(7.56/15)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/skred_kart.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+
+
+
+                Label:
+                    markup : True
+                    text: '\n[color=000000][size=64][b]Forebygging[/b][/size]\nPå grunn av at vi har mange skredutsatte områder i Norge, blir det gjort tiltak for å forebygge skred og begrense skadeomfanget når et skred går. Et eksempel som blir tatt i bruk i mange steder av landet er snøskredgjerder som på bildet under for å hindre utløsningen av skred. Ledevoller og fangvoller brukes for å hindre skredmasser i å treffe områder der de kan utgjøre skade. I tillegg kan trær bremse snøskred, og blir derfor bevisst beholdt i skredutsatte områder. [/color]\n'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    keep_ratio : True
+                    allow_stretch : True
+                    size: ((root.width+root.height)/2)*(8.1/12),((root.width+root.height)/2)*(3.83/12)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/sikring_gjerde.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+
+
+                Label:
+                    markup : True
+                    text: '\n[color=000000][size=64][b]Ikke så fun fact...[/b][/size]\nUt ifra grafen under (figur 3) kan man se at man har omtrent 90% sjanse for å overleve etter å være begravd under snøen i 18 minutter. Fram til cirka 45 minutter etter å være begravd, synker overlevelsesraten med i snitt 2.5% per minutt. Derfor er det alltid viktig å sjekke skredvarslingen til NVE før en tur, for å unngå en slik ulykke (trykk på knappen nederst).[/color]\n'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    keep_ratio : True
+                    allow_stretch : True
+                    size: ((root.width+root.height)/2)*(6.28/12),((root.width+root.height)/2)*(6.67/12)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/overlev_kurve.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+                Label:
+                    markup : True
+                    text: '\n'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                MagicButton:
+                    magic_speed:2
+                    size_hint : None,None
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+                    size: ((root.width+root.height)/2)*(7.4/15),((root.width+root.height)/2)*(2.93/15)
+                    on_press:
+                        self.grow()
+                        root.vibrate()
+                        Clock.schedule_once(root.nve, 0.18)
+
+                    Image:
+                        source:"Images/NVE.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: ((root.width+root.height)/2)*(7.4/15),((root.width+root.height)/2)*(2.93/15)
+
+<Landskap>:
+    name:"landskap"
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            elevation: 0
+            radius: (0, 0, 32, 32)
+            md_bg_color:  (178/255, 252/255, 255/255, 1)
+            specific_text_color: (0,0,0,1)
+            title: "Landskap"
+            type: "top"
+            right_action_items: [["home", lambda x: root.home(x)]]
+
+        ScrollView:
+            BoxLayout:
+                size_hint_y : None
+                height : self.minimum_height
+                orientation: "vertical"
+                padding: 30, 20
+                spacing: 10
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]Innlandsis[/b][/size]\nDet norske landskapet har blitt formet av en rekke isbreer i løpet av de forskjellige istidene. De bratte u-dalene og det alpine landskapet ble dannet av innlandsiser som har erodert landskapet gjentatte ganger over flere millioner år. Innlandsis er en massiv isbre som dekker et stort geografisk område (ofte utover flere land). Til tider er store deler av bresålen (nedre delen av breen) til slike breer fryst fast til underlaget, men likevel finnes det svært aktive deler som beveger seg flere meter per døgn, grunnet høydeforskjellene i landskapet under. Disse aktive områdene kalles isstrømmer og beveger seg ofte fra høytliggende områder til brekanten som illustrert i fig. 1 (de røde linjene er isstrømmer). Gjennom denne prosessen glir de på underlaget/berggrunnen og eroderer landskapet ved hjelp av andre bergarter som har eksempelvis blitt tatt opp etter frostforvitring av berggrunnen.\n [/color]'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    keep_ratio : True
+                    allow_stretch : True
+                    size: ((root.width+root.height)/2)*(5.2/10),((root.width+root.height)/2)*(8/10)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/kart_ibree1.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+
+                Label:
+                    markup : True
+                    text: '\n[color=000000][size=64][b]U-daler og det alpine landskapet [/b][/size]\nU-daler dannes når høydeforskjeller som allerede eksisterer i landskapet fører til trykkforskjeller når innlandsisen legger seg oppå landskapet. Disse trykkforskjellene fører til forskjellige eroderingshastigheter, noe som resulterer i at den allerede eksisterende høydeforskjellen i landskapet forsterkes. Over flere istider kan slike prosesser resultere i dype u-daler.\n [/color]'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(8.5/15),((root.width+root.height)/2)*(5.7/15)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/botn5.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: ((root.width+root.height)/2)*(8.5/15),((root.width+root.height)/2)*(5.7/15)
+                Label:
+                    markup : True
+                    text: "[color=000000]Det alpine landskapet derimot, dannes av botnbreer som er en spesifikk type isbre som ligger i fordypninger i fjellet som isbreen selv har gravd ut (se fig. 2). Slike breer kan vokse i størrelse og bli mindre slik at fjellgrunnen eroderes ytterligere. Flere botnbreer kan sammen danne spisse fjelltopper og bratte landskap som man gjerne kaller et alpint landskap.[/color]"
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+
+<Snoeskred>:
+    name: "snoeskred"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            elevation: 0
+            radius: (0, 0, 32, 32)
+            md_bg_color:  (178/255, 252/255, 255/255, 1)
+            specific_text_color: (0,0,0,1)
+            title: "Snøskred"
+            type: "top"
+            right_action_items: [["home", lambda x: root.home(x)]]
+
+        ScrollView:
+            BoxLayout:
+                size_hint_y : None
+                height : self.minimum_height
+                orientation: "vertical"
+                padding: 30, 20
+                spacing: 10
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]Kunnskap[/b][/size]\nSnøskred er en naturfare som oppstår når store mengder snø raskt beveger seg nedover en fjellskråning. I Norge har snøskred i snitt drept nesten sju mennesker årlig det siste tiåret, hvor 90% av de avdøde var turgåere. Som fjellturist er det derfor viktig å være kjent med snøskred og hva som kan utløse det, for å kunne ferde på tryggest mulig måte i naturen. \n[/color]'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]Kategorier[/b][/size]\nSnøskred deles inn i to hovedkategorier: Flakskred og løssnøkred. Den førstnevnte snøskredtypen kjennetegnes av å innebære bundet, fast snø som løsrives fra snødekket, og glir nedover fjellsiden som ett stort flak (se figur 2). Skråningen må i de fleste tilfeller være minst 30° bratt for at skredtypen skal utløses. Flakskred kan dessuten nå hastigheter på opptil 130 km/t. Ifølge det sveitsiske instituttet for snøskredforskning, er flakskred ansvarlig for 90% av dødsfallene forårsaket av snøskred. Når det gjelder løssnøskred, forekommer disse når løs snø begynner å gli nedover fjellet fra ett punkt, og utvider seg stadig mer nedover skråningen (se figur 1). Ettersom løssnøskred er både tregere og mindre i størrelsen enn flakskred, har de et mindre potensial til å skade turgåere, og er dermed mindre farlige enn flakskred. På den andre siden kan løssnøskred ha alvorlige konsekvenser dersom man befinner seg i fjellkløfter og andre terrengfeller.  \n[/color]'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(8.51/14),((root.width+root.height)/2)*(4.54/14)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/Snoeskredtyp.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: ((root.width+root.height)/2)*(8.51/14),((root.width+root.height)/2)*(4.54/14)
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(8.51/14),((root.width+root.height)/2)*(4.54/14)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/belastning.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: ((root.width+root.height)/2)*(8.51/14),((root.width+root.height)/2)*(4.54/14)
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]\nÅrsak[/b][/size]\nDet finnes flere årsaker til at et snøskred utløses. Et eksempel er såkalt pålagring; når snø- og regnfall øker massen på snødekket, slik at trykket på snødekket øker og det svakeste laget til slutt gir etter og glir (se fig. 4). Pålagring kan også fremkomme på grunn av fokksnø, altså når snø transporteres av vinden oppå et snødekke, gjerne i terreng hvor snøen lett kan samle seg, et såkalt leområde. En annen mulig årsak til snøskredutløsning, er vedvarende svake lag i snødekket (figur 5). Vedvarende svake lag er løse snølag som ofte forekommer som følge av konstruktiv metamorfose når temperaturforskjellen mellom bakken og snøens overflate er høy, typisk for klarværsperioder. Under perioder med vedvarende lave temperaturer, vil vanndamp nederst i snødekket, hvor temperaturen er rundt 0°C, stige oppover gjennom snølagene. Hvis variasjonen i temperatur i snødekket, temperaturgradienten, er på minst 10°C per meter, vil vanndampen kunne fryses på snøkrystaller på vei opp og forandre formen på dem: De går fra å være rundformede, til å bli terningformede med størrelse opptil 3mm, såkalt kantkornet snø. Ved høy nok temperaturgradient vil snøkrystallene også kunne bli enda større (opptil 8mm) og få en sekskantet begerform (se figur 6). Begge disse forandringene av snøkrystallene øker risikoen for fjernutløsning av flakskred, gjennom å svekke integriteten til underliggende snølag, som vist i figur 5. Ved trykkbelasting kan disse kollapse og den overliggende snøen vil gli ut som et flak.  \n[/color]'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(11/17),((root.width+root.height)/2)*(4.1/17)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/lag.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+                Label:
+                    markup:True
+                    text: "\n"
+
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(8.35/12),((root.width+root.height)/2)*(3.91/12)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/konst_met_3.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+                Label:
+                    markup:True
+                    text: "[color=000000][size=64][b]\nTolking av varsel[/b][/size]\nSkredvarselet nedenfor, figur 7, gjelder et fjellområde i Salten i Nordland fylke, og har blitt utsendt på grunn av vedvarende svake lag/konstruktiv metamorfose. En av grunnene til at varselet har fått maksimal faregrad, er at det er stor sannsynlighet for at skredet fjernutløses. Dessuten forteller varselet at de vedvarende svake lagene ligger under skare, som virker som en beskyttende og isolerende skorpe over de underliggende snølagene. Dette vil med tid gjøre at mengden vanndamp i snødekket stiger, ettersom gassen ikke vil kunne trenge gjennom skarelaget. Opphopningen av vanndamp vil føre til økt konstruktiv metamorfose, som danner stadig mer kantkornet snø i snødekket. Dersom en skiløper eller snowboardkjører beveger seg over snødekket, kan tilleggsbelastningen være nok til å utløse et stort flakskred. Høyden til skråningen (300m) vil også bidra til at et eventuelt utløst flak kan bygge opp stor hastighet før det når veier og bebyggelse i nærheten. \n[/color]"
+
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(12.47/20),((root.width+root.height)/2)*(3.63/20)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/varsel.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+
+                Label:
+                    markup:True
+                    text: "[color=000000]\nNår temperaturen er høyere (men fremdeles under 0°C), kan en annen prosess, destruktiv metamorfose, resultere i et snøskred. Ved destruktiv metamorfose vil nyfalne snøkrystaller gjennomgå en omvandling som gir dem en kuleformet struktur, som illustrert i figur 8. Dette skjer på grunn av at de spisse, konvekse delene av snøkrystallen fordamper, og denne vanndampen vil deretter direkte omdannes til is gjennom sublimasjon, og fryse seg fast på de krumme, konkave delene. Den nye kuleformede krystallstrukturen gjør at løssnøskred blir mer sannsynlig tidlig etter snøfallet, men skredfaren vil med tid avta, etter hvert som snøkrystallene bindes sammen av isbroer.\n[/color]"
+
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Button:
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(10.55/17),((root.width+root.height)/2)*(3.06/17)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    Image:
+                        source: "Images/des_met.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: self.parent.size
+
+                Label:
+                    markup:True
+                    text: "[color=000000][size=64][b]\nMennesker i bildet[/b][/size]\nMennesker som beveger seg på snøen på ski, snøscooter eller snøbrett kan være en årsak til at et skred inntreffer, ved å påføre ekstra masse på snødekket (se fig. 3). Er den økte belastningen for stor i forhold til bæreevnen til det svakeste laget, kan det gå et skred. På bakgrunn av dette er det viktig at du, som turist, unngår skredutsatte områder så langt det lar seg gjøre. Mye nedbør i form av snø eller regn, høy relativ temperatur og fjellskråninger brattere enn 30° kan tyde på at et skred kan gå i området i nær framtid. Vær obs på at når vedvarende svake lag sammenfaller, vil de iblant drønne. Dette er et faretegn, så det er lurt å lytte etter plutselige drønn når du for eksempel står på ski eller deltar i friluftsaktiviteter i fjellområder.  [/color]"
+
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+
+
+
+<Help>:
+    name: "help"
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDToolbar:
+            elevation: 0
+            radius: (0, 0, 32, 32)
+            md_bg_color:  (178/255, 252/255, 255/255, 1)
+            specific_text_color: (0,0,0,1)
+            title: "Om oss"
+            type: "top"
+            right_action_items: [["home", lambda x: root.home(x)]]
+
+        ScrollView:
+            BoxLayout:
+                size_hint_y : None
+                height : self.minimum_height
+                orientation: "vertical"
+                padding: 30, 10
+                spacing : 20
+
+                Label:
+                    markup : True
+                    text: '[color=000000][size=64][b]Hva er SkredKompis?[/b][/size]\nSkredkompis er en handy liten app lagd i sammenheng med et geofag 1 prosjekt. Appen gir en kort innføring i hvordan det norske alpine landskapet ble til, hvordan landskapet tilrettelegger for snøskred, forskjellige typer snøsked , hvordan snøskred oppstår og henholdsvis hvordan man skal sikre seg selv.[/color]\n\n[color=000000][size=64][b]Hvem er vi?[/b][/size]\nVi er en gjeng engasjerte geofag 1 elever\n[i]Programmerer:[/i] Yudhishtiran Vajeeston\n[i]Innhold[/i]: Ara Karim, Anders Martin Eliassen og Yudhishtiran Vajeeston\n\n'
+                    size_hint_y: None
+                    size_hint_x:1
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+
+                MagicButton:
+                    magic_speed: 2
+                    size_hint: None,None
+                    size: ((root.width+root.height)/2)*(5.52/10),((root.width+root.height)/2)*(3/10)
+                    pos_hint: {"center_x": 0.5 ,"center_y":0.5}
+                    background_color : 0,0,0,0
+
+                    on_press:
+                        self.grow()
+                        root.vibrate()
+                        Clock.schedule_once(root.kilder, 0.18)
+
+
+                    Image:
+                        source: "Images/Kilder.png"
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                        size: ((root.width+root.height)/2)*(7.4/15),((root.width+root.height)/2)*(2.93/15)
